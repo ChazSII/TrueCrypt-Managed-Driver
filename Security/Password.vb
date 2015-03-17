@@ -1,7 +1,7 @@
 ﻿Imports System.IO
 Imports System.Text
-Imports TrueCryptDriver.Common
-Imports TrueCryptDriver.Driver.Constants
+Imports CS2Soft.TrueCryptManagedDriver.Common
+Imports CS2Soft.TrueCryptManagedDriver.Driver.Constants
 
 Namespace Security
     Public Class Password

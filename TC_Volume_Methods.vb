@@ -1,12 +1,12 @@
 ﻿Imports System.IO
 Imports System.Runtime.InteropServices
 Imports System.Security.Permissions
-Imports TrueCryptDriver.Common
-Imports TrueCryptDriver.Common.Enums
-Imports TrueCryptDriver.Common.Structures
-Imports TrueCryptDriver.Driver.Constants
-Imports TrueCryptDriver.Driver.Enums
-Imports TrueCryptDriver.Driver.Structures
+Imports CS2Soft.TrueCryptManagedDriver.Common
+Imports CS2Soft.TrueCryptManagedDriver.Common.Enums
+Imports CS2Soft.TrueCryptManagedDriver.Common.Structures
+Imports CS2Soft.TrueCryptManagedDriver.Driver.Constants
+Imports CS2Soft.TrueCryptManagedDriver.Driver.Enums
+Imports CS2Soft.TrueCryptManagedDriver.Driver.Structures
 
 Partial Public Class TC_Driver
 

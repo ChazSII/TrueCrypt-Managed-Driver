@@ -2,18 +2,18 @@
 Imports System.Threading
 Imports System.ServiceProcess
 Imports System.Runtime.InteropServices
-Imports TrueCryptDriver.Driver.Constants
-Imports TrueCryptDriver.Driver.Enums
-Imports TrueCryptDriver.Driver.Structures
-Imports TrueCryptDriver.Common.Enums
-Imports TrueCryptDriver.Common.NativeMethods
-Imports TrueCryptDriver.Common
+Imports CS2Soft.TrueCryptManagedDriver.Driver.Constants
+Imports CS2Soft.TrueCryptManagedDriver.Driver.Enums
+Imports CS2Soft.TrueCryptManagedDriver.Driver.Structures
+Imports CS2Soft.TrueCryptManagedDriver.Common.Enums
+Imports CS2Soft.TrueCryptManagedDriver.Common.NativeMethods
+Imports CS2Soft.TrueCryptManagedDriver.Common
 Imports System.ComponentModel
 Imports System.Configuration.Install
 Imports Microsoft.Win32
-Imports TrueCryptDriver.Common.NativeCallWrappers
-Imports TrueCryptDriver.Security
-Imports TrueCryptDriver.Common.Structures
+Imports CS2Soft.TrueCryptManagedDriver.Common.NativeCallWrappers
+Imports CS2Soft.TrueCryptManagedDriver.Security
+Imports CS2Soft.TrueCryptManagedDriver.Common.Structures
 
 Public Class TC_Driver
     Implements IDisposable
@@ -36,13 +36,13 @@ Public Class TC_Driver
         End Get
     End Property
 
-    Public Sub New()
+    Public Sub New(ByVal DriverLocation64bit As String)
         If Not Environment.Is64BitProcess = Environment.Is64BitOperatingSystem Then
             Throw New PlatformNotSupportedException("TrueCryptAPI needs a 64 bit process to run correctly")
         End If
 
-        pDriver32bitLocation = Path.GetFullPath(".\Resources\truecrypt.sys")
-        pDriver64bitLocation = Path.GetFullPath(".\Resources\truecrypt-x64.sys")
+        'pDriver32bitLocation = Path.GetFullPath(".\Resources\truecrypt.sys")
+        pDriver64bitLocation = Path.GetFullPath(DriverLocation64bit)
 
         Dim DriverStatus As TC_ERROR
         Dim DriverLoadAttempts As Integer = 0

@@ -1,10 +1,10 @@
 ﻿Imports System.IO
 Imports System.Text
 Imports System.Runtime.InteropServices
-Imports TrueCryptDriver.Common.Enums
-Imports TrueCryptDriver.Driver.Enums
-Imports TrueCryptDriver.Driver.Constants
-Imports TrueCryptDriver.Driver.Structures
+Imports CS2Soft.TrueCryptManagedDriver.Common.Enums
+Imports CS2Soft.TrueCryptManagedDriver.Driver.Enums
+Imports CS2Soft.TrueCryptManagedDriver.Driver.Constants
+Imports CS2Soft.TrueCryptManagedDriver.Driver.Structures
 
 Namespace Common
     Friend Module NativeMethods

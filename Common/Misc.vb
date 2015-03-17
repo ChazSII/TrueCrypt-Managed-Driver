@@ -1,5 +1,5 @@
 ﻿Imports System.IO
-Imports TrueCryptDriver.Driver.Constants
+Imports CS2Soft.TrueCryptManagedDriver.Driver.Constants
 
 Namespace Common
     Friend Module Misc
