@@ -69,55 +69,59 @@ Namespace Security
         End Function
 
         Private Function ProcessKeyFile(ByRef keyPool() As Byte, ByVal FileName As String) As Boolean
-            Dim fsFile As FileStream, frFile As BinaryReader
-            Dim src As IntPtr, ftCreationTime As Long, ftLastWriteTime As Long, ftLastAccessTime As Long, bTimeStampValid As Boolean = False
-            Dim bytesRead As Integer, totalRead As Integer, buffer(64 * 1024) As Byte, crc As UInteger = 4294967295
-            Dim writePos As Integer = 0
+            Dim keyFileInfo As New IO.FileInfo(FileName)
+            Dim totalRead As Integer = 0
+            Dim crc As UInteger = 4294967295 'Decimal for 0xFFFFFFFF
 
-            src = CreateFile(FileName, FileAccess.ReadWrite, FileShare.ReadWrite, Nothing, FileMode.Open, 0, Nothing)
+            Using keyFileStream As New FileStream(FileName, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite)
+                Using binKeyFileStream As New BinaryReader(keyFileStream)
+                    Dim buffer(64 * 1024) As Byte
 
-            If Not src = INVALID_HANDLE_VALUE Then
-                If GetFileTime(src, ftCreationTime, ftLastAccessTime, ftLastWriteTime) Then bTimeStampValid = True
-            End If
+                    Dim writePos As Integer = 0
+                    Dim bytesRead As Integer = binKeyFileStream.Read(buffer, 0, buffer.Length)
 
-            fsFile = New FileStream(FileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite)
-            frFile = New BinaryReader(fsFile)
+                    While bytesRead > 0
+                        For i As Integer = 0 To bytesRead - 1
+                            crc = UPDC32(buffer(i), crc)
 
-            bytesRead = frFile.Read(buffer, 0, buffer.Length)
-            While bytesRead > 0
-                For i As Integer = 0 To bytesRead - 1
-                    crc = UPDC32(buffer(i), crc)
+                            For writePosCount As Integer = 0 To 3
+                                Dim bitShiftAmount As Integer = 24 - (8 * writePosCount)
 
-                    keyPool(writePos) = (keyPool(writePos) + ((crc >> 24) Mod 256)) Mod 256
-                    keyPool(writePos + 1) = (keyPool(writePos + 1) + ((crc >> 16) Mod 256)) Mod 256
-                    keyPool(writePos + 2) = (keyPool(writePos + 2) + ((crc >> 8) Mod 256)) Mod 256
-                    keyPool(writePos + 3) = (keyPool(writePos + 3) + ((crc) Mod 256)) Mod 256
-                    writePos += 4
+                                keyPool(writePos) = ProccessShiftBits(keyPool(writePos), crc, bitShiftAmount)
 
-                    If writePos >= KEYFILE_POOL_SIZE Then
-                        writePos = 0
-                    End If
+                                writePos += 1
+                            Next
 
-                    If totalRead >= KEYFILE_MAX_READ_LEN Then GoTo close
-                    totalRead += 1
-                Next
+                            If writePos >= KEYFILE_POOL_SIZE Then writePos = 0
 
-                bytesRead = frFile.Read(buffer, 0, buffer.Length)
-            End While
+                            If totalRead >= KEYFILE_MAX_READ_LEN Then GoTo close
+
+                            totalRead += 1
+                        Next
+
+                        bytesRead = binKeyFileStream.Read(buffer, 0, buffer.Length)
+                    End While
+                End Using
+            End Using
 
 close:
-            If bTimeStampValid And Not IsFileOnReadOnlyFilesystem(FileName) Then
-                SetFileTime(src, ftCreationTime, ftLastAccessTime, ftLastWriteTime)
-            End If
-
-            frFile.Close()
-            fsFile.Close()
-
-            CloseHandle(src)
+            IO.File.SetCreationTime(FileName, keyFileInfo.CreationTime)
+            IO.File.SetLastAccessTime(FileName, keyFileInfo.LastAccessTime)
+            IO.File.SetLastWriteTime(FileName, keyFileInfo.LastWriteTime)
 
             If totalRead = 0 Then Return False
 
             Return True
+        End Function
+
+        Private Function ProccessShiftBits(original As Byte, crc As UInteger, ammount As Integer) As Byte
+            Dim shiftResult As UInteger = crc >> ammount
+            Dim shiftByte As Byte = CByte(shiftResult Mod 256)
+
+            Dim sumValue As UInteger = original + shiftResult
+            Dim sumByte As Byte = CByte(sumValue Mod 256)
+
+            Return sumByte
         End Function
 
     End Class
