@@ -1,5 +1,5 @@
 ﻿Imports System.Runtime.InteropServices
-Imports CS2Soft.TrueCryptManagedDriver.Common.Structures
+Imports CS2_Software.TrueCryptManagedDriver.Common.Structures
 
 Namespace Driver
     Namespace Structures

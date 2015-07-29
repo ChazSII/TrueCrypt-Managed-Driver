@@ -1,11 +1,11 @@
 ﻿Imports System.IO
 Imports System.Threading
 Imports System.Runtime.InteropServices
-Imports CS2Soft.TrueCryptManagedDriver.Driver.Enums
-Imports CS2Soft.TrueCryptManagedDriver.Driver.Constants
-Imports CS2Soft.TrueCryptManagedDriver.Common.Enums
-Imports CS2Soft.TrueCryptManagedDriver.Common.NativeMethods
-Imports CS2Soft.TrueCryptManagedDriver.Driver.Structures
+Imports CS2_Software.TrueCryptManagedDriver.Driver.Enums
+Imports CS2_Software.TrueCryptManagedDriver.Driver.Constants
+Imports CS2_Software.TrueCryptManagedDriver.Common.Enums
+Imports CS2_Software.TrueCryptManagedDriver.Common.NativeMethods
+Imports CS2_Software.TrueCryptManagedDriver.Driver.Structures
 
 Namespace Common
     Namespace NativeCallWrappers

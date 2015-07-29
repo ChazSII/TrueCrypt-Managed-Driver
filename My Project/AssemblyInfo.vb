@@ -8,10 +8,10 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("TrueCryptAPI")> 
-<Assembly: AssemblyDescription("")> 
-<Assembly: AssemblyCompany("")> 
-<Assembly: AssemblyProduct("TrueCryptAPI")> 
+<Assembly: AssemblyTitle("TrueCrypt Managed Driver")> 
+<Assembly: AssemblyDescription("A managed wrapper for the official TrueCrypt driver, version 7.1a. Currently implements mounting and dismounting with support for keyfiles.")> 
+<Assembly: AssemblyCompany("CS2 Software")> 
+<Assembly: AssemblyProduct("TrueCrypt Managed Driver")> 
 <Assembly: AssemblyCopyright("Copyright ©  2014")> 
 <Assembly: AssemblyTrademark("")> 
 
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.0.0.0")> 
-<Assembly: AssemblyFileVersion("1.0.0.0")> 
+<Assembly: AssemblyVersion("1.1.0.0")> 
+<Assembly: AssemblyFileVersion("1.1.0.0")> 

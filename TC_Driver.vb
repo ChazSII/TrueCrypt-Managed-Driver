@@ -2,18 +2,18 @@
 Imports System.Threading
 Imports System.ServiceProcess
 Imports System.Runtime.InteropServices
-Imports CS2Soft.TrueCryptManagedDriver.Driver.Constants
-Imports CS2Soft.TrueCryptManagedDriver.Driver.Enums
-Imports CS2Soft.TrueCryptManagedDriver.Driver.Structures
-Imports CS2Soft.TrueCryptManagedDriver.Common.Enums
-Imports CS2Soft.TrueCryptManagedDriver.Common.NativeMethods
-Imports CS2Soft.TrueCryptManagedDriver.Common
+Imports CS2_Software.TrueCryptManagedDriver.Driver.Constants
+Imports CS2_Software.TrueCryptManagedDriver.Driver.Enums
+Imports CS2_Software.TrueCryptManagedDriver.Driver.Structures
+Imports CS2_Software.TrueCryptManagedDriver.Common.Enums
+Imports CS2_Software.TrueCryptManagedDriver.Common.NativeMethods
+Imports CS2_Software.TrueCryptManagedDriver.Common
 Imports System.ComponentModel
 Imports System.Configuration.Install
 Imports Microsoft.Win32
-Imports CS2Soft.TrueCryptManagedDriver.Common.NativeCallWrappers
-Imports CS2Soft.TrueCryptManagedDriver.Security
-Imports CS2Soft.TrueCryptManagedDriver.Common.Structures
+Imports CS2_Software.TrueCryptManagedDriver.Common.NativeCallWrappers
+Imports CS2_Software.TrueCryptManagedDriver.Security
+Imports CS2_Software.TrueCryptManagedDriver.Common.Structures
 
 Public Class TC_Driver
     Implements IDisposable

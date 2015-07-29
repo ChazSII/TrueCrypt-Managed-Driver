@@ -64,9 +64,9 @@ Namespace My
     Friend Module MySettingsProperty
         
         <Global.System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")>  _
-        Friend ReadOnly Property Settings() As Global.CS2Soft.TrueCryptManagedDriver.My.MySettings
+        Friend ReadOnly Property Settings() As Global.CS2_Software.TrueCryptManagedDriver.My.MySettings
             Get
-                Return Global.CS2Soft.TrueCryptManagedDriver.My.MySettings.Default
+                Return Global.CS2_Software.TrueCryptManagedDriver.My.MySettings.Default
             End Get
         End Property
     End Module

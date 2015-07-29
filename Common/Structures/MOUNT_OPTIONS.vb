@@ -1,4 +1,4 @@
-﻿Imports CS2Soft.TrueCryptManagedDriver.Security
+﻿Imports CS2_Software.TrueCryptManagedDriver.Security
 
 Namespace Common
     Namespace Structures
